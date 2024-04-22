@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 # ssh client configuration script
 
-sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+Host 530748-web-01 100.26.220.185
+     HostName 100.26.220.185
+     IdentitiesOnly = yes
+     IdentityFile ~/.ssh/school
