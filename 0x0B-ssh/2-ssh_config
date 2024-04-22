@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# ssh client configuration script
+
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
