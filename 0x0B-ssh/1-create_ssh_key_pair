@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
 # A Bash script that creates an RSA key pair
 
-openssl genrsa -aes256 -out school.key 4096
-openssl rsa -in school.key -outform PEM -pubout -out school.pub
-
-openssl rsa -aes256 -in school.key -out school_encrypted.key -passout pass:betty
-
-rm school.key
-
-echo "RSA key pair 'school.key' and 'school.pub' created."
-echo "Encrypted private key 'school_encrypted.key' created with passphrase 'betty'."
+ssh-keygen -t rsa -f school -b 4096 -N betty
