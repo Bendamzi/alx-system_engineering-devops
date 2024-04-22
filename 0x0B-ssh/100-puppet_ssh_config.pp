@@ -1,6 +1,15 @@
-# creates a configuration file for an ssh connection
-file {'/root/.ssh/config':
+# Configure the SSH client configuration file
+
+file { '/etc/ssh/ssh_config':
   ensure  => present,
-  content => "Host 530748-web-01 100.26.220.185\n\tHostName 100.26.220.185\n\tIdentitiesOnly = yes\n\tIdentityFile ~/.ssh/school",
+  owner   => 'root',
+  group   => 'root',
   mode    => '0644',
+  content => @("EOF")
+# SSH client configuration managed by Puppet
+
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+    EOF
 }
