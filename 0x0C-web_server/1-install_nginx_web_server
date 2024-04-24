@@ -1,8 +1,39 @@
 #!/usr/bin/env bash
-# installs and configures nginx web server on a remote server
+# This script installs and configures Nginx on an Ubuntu machine
 
-sudo apt-get -y install nginx;
-sudo ufw allow "Nginx HTTP";
-sudo su;
-echo "Hello World!" > /var/www/html/index.html;
-sudo service nginx restart;
+# Update package lists
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install -y nginx
+
+# Remove the default Nginx configuration
+sudo rm /etc/nginx/sites-enabled/default
+
+# Create custom Nginx configuration file
+cat << EOF | sudo tee /etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm;
+
+    server_name _;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOF
+
+# Create the HTML file with the desired content
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Enable the new configuration
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Restart Nginx
+sudo service nginx restart
+
+echo "Nginx has been configured and is now running."
