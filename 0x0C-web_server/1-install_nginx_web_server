@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# Requirements:
-#install nginx on your webserver, configure nginx to run on port 80.
+# installs and configures nginx web server on a remote server
 
-apt-get -y update
-apt-get -y install nginx
-
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+sudo apt-get -y install nginx;
+sudo ufw allow "Nginx HTTP";
+sudo su;
+echo "Hello World!" > /var/www/html/index.html;
+sudo service nginx restart;
