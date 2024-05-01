@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ssh client configuration script
 
-Host 530748-web-01 100.26.220.185
-     HostName 100.26.220.185
+Host 530748-web-01 34.232.78.82
+     HostName 34.232.78.82
      IdentitiesOnly = yes
      IdentityFile ~/.ssh/school
