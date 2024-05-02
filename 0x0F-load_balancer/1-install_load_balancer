@@ -34,14 +34,14 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend theatomhub-tech-frontend
+frontend bendamzi-tech-frontend
     bind *:80
-    default_backend theatomhub-tech-backend
+    default_backend bendamzi-tech-backend
 
-backend theatomhub-tech-backend
+backend bendamzi-tech-backend
     balance roundrobin
-    server 530483-web-01 54.237.55.58:80 check
-    server 530483-web-02 35.153.50.103:80 check
+    server 530494-web-01 34.232.78.82 check
+    server 530494-web-02 54.174.111.6 check
 "
 
 # shellcheck disable=SC2154
