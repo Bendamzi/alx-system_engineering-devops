@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script debugs and solves an nginx installation that is not reachable on port 80
-apt-get update
-apt-get install -y nginx
-service nginx start
+# script to listen the port 80
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
+sudo service nginx restart
+sudo pkill -o nginx
