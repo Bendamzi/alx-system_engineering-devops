@@ -1,10 +1,7 @@
-# script updates the limit's value for a number of opened file for user holberton
-exec { 'increases the hard limit value for user - holberton':
-    command => 'sed -i \'s/holberton hard nofile 4/holberton hard nofile 500/g\' /etc/security/limits.conf',
-    path    => ['/bin/', '/usr/bin/']
-}
+# Change the OS configuration so that it is possible to login with the
+# holberton user and open a file without any error message.
 
-exec { 'increases the soft limit value for user - holberton':
-    command => 'sed -i \'s/holberton soft nofile 4/holberton soft nofile 500/g\' /etc/security/limits.conf',
-    path    => ['/bin/', '/usr/bin/']
+exec {'OS security config':
+  command => 'sed -i "s/holberton/foo/" /etc/security/limits.conf',
+  path    => '/usr/bin/env/:/bin/:/usr/bin/:/usr/sbin/'
 }
